@@ -3,9 +3,17 @@ $("#currentDay").text(now.format("MMM Do, YYYY HH:MM"));
 var timeblockContainer = document.getElementById("container");
 var startTime = 8;
 var endTime = 18;
+var currentHour = now.format("HH");
+var hourColor = "";
 
 for (var i = startTime; i < endTime + 1; i++) {
-    
+    if(i < currentHour){
+        hourColor = "past";
+    }else if (i == currentHour){
+        hourColor = "current"
+    }else {
+        hourColor = "future"
+    }
     var timeblock = document.createElement('section');
     var hourLabel = document.createElement('div');
     var textEntryEl = document.createElement('form');
@@ -18,7 +26,7 @@ for (var i = startTime; i < endTime + 1; i++) {
     hourLabel.setAttribute("class", "hour-label");
     hourLabel.textContent = (i + ":00");
     textEntryBox.setAttribute("class", "form-group");
-    textArea.setAttribute("class", "form-control");
+    textArea.setAttribute("class", hourColor);
     textArea.setAttribute("id", ("textArea-" + i));
     textArea.setAttribute("rows", "3");
 
@@ -28,6 +36,9 @@ for (var i = startTime; i < endTime + 1; i++) {
     textEntryEl.append(textEntryBox);
     textEntryBox.append(textArea);
 }
+
+var currentHour = now.format("hh");
+console.log(currentHour);
 
 
 

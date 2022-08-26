@@ -3,7 +3,7 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   line-height: 1;
-  background-color: tan;
+  background-image: linear-gradient(orange, #dbaf0f);
 }
 
 main {
@@ -14,6 +14,21 @@ main {
 .timeblock {
   display: flex;
   align-items: start;
+}
+
+.past {
+  width: 90%;
+  background-color: rgba(128, 128, 128, 0.619);
+}
+
+.current {
+  width: 90%;
+  background-color: rgb(170, 4, 4);
+}
+
+.future {
+  width: 90%;
+  background-color: green;
 }
 
 textarea {
