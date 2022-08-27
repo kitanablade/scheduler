@@ -7,53 +7,49 @@ var currentHour = now.format("HH");
 var hourColor = "";
 
 for (var i = startTime; i < endTime + 1; i++) {
-    if(i < currentHour){
-        hourColor = "past";
-    }else if (i == currentHour){
-        hourColor = "current"
-    }else {
-        hourColor = "future"
-    }
-    var timeblock = document.createElement('section');
-    var hourLabel = document.createElement('div');
-    var textEntryEl = document.createElement('form');
-    var textEntryBox = document.createElement('div');
-    var textArea = document.createElement('textarea');
-    
-    timeblock.setAttribute("class", "timeblock");
-    timeblock.setAttribute("id", ("hour-" + i));
-    
-    hourLabel.setAttribute("class", "hour-label");
-    hourLabel.textContent = (i + ":00");
-    textEntryBox.setAttribute("class", "form-group");
-    textArea.setAttribute("class", hourColor);
-    textArea.setAttribute("id", ("textArea-" + i));
-    textArea.setAttribute("rows", "3");
+  if (i < currentHour) {
+    hourColor = "past";
+  } else if (i == currentHour) {
+    hourColor = "current";
+  } else {
+    hourColor = "future";
+  }
+  var timeblock = document.createElement("section");
+  var hourLabel = document.createElement("div");
+  var textEntryEl = document.createElement("form");
+  var textEntryBox = document.createElement("div");
+  var saveBtn = document.createElement("button");
+  var textArea = document.createElement("textarea");
 
-    timeblockContainer.append(timeblock);
-    timeblock.append(hourLabel);
-    timeblock.append(textEntryEl);
-    textEntryEl.append(textEntryBox);
-    textEntryBox.append(textArea);
+  timeblock.setAttribute("class", "timeblock");
+  timeblock.setAttribute("id", "hour-" + i);
+
+  hourLabel.setAttribute("class", "hour-label");
+  hourLabel.textContent = i + ":00";
+  textEntryBox.setAttribute("class", "form-group");
+  textArea.setAttribute("class", hourColor);
+  textArea.setAttribute("id", "textArea-" + i);
+  textArea.setAttribute("rows", "3");
+  saveBtn.textContent = "Save";
+  saveBtn.setAttribute("class", "save-btn");
+  saveBtn.setAttribute("id", "save-button-" + i);
+  saveBtn.setAttribute("onclick", "saveData(this)");
+
+  timeblockContainer.append(timeblock);
+  timeblock.append(hourLabel);
+  timeblock.append(textEntryEl);
+  textEntryEl.append(textEntryBox);
+  textEntryBox.append(textArea);
+  timeblock.append(saveBtn);
 }
 
-var currentHour = now.format("hh");
-console.log(currentHour);
+function saveData(button){
+    console.log(button);
+    localStorage.setItem(button.id, "TEST");
+    const formEl = button.previousElementSibling;
+    textBox = formEl.firstChild.firstChild
+    console.log(textBox);
+    var data = document.getElementById(textBox.id).value;
+    console.log(data);
+}
 
-
-
-
-
-
-{/* <div class="container">
-      <!-- Timeblocks go here -->
-      <section class="timeblock" id = "hour-8"></section>
-      <div class="hour-label">8:00</div>
-      <h2 class="">Test text</h2>
-      <button class="save">Save icon placeholder</button>
-    </div> */}
-
-//     <div class="form-group">
-//     <label for="exampleFormControlTextarea1">Example textarea</label>
-//     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-//   </div>

@@ -3,7 +3,8 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   line-height: 1;
-  background-image: linear-gradient(orange, #dbaf0f);
+  /* background-image: linear-gradient(orange, #dbaf0f); */
+  background-image: linear-gradient(coral, rgba(255, 255, 0, 0.173));
 }
 
 main {
@@ -17,17 +18,17 @@ main {
 }
 
 .past {
-  width: 90%;
+  width: 100%;
   background-color: rgba(128, 128, 128, 0.619);
 }
 
 .current {
-  width: 90%;
+  width: 100%;
   background-color: rgb(170, 4, 4);
 }
 
 .future {
-  width: 90%;
+  width: 100%;
   background-color: green;
 }
 
@@ -38,6 +39,19 @@ textarea {
   color: #000000;
   border-left: 1px solid black;
   padding: 10px;
+}
+
+.save-btn {
+  background-color: #4CAF50;
+  border: none;
+  color: black !important;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block !important;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
 }
 
 .jumbotron {
@@ -64,12 +78,6 @@ form {
 
 .form-group {
   width: 100%;
-}
-
-.form-control {
-  background-color: green;
-  width: 80%;
-
 }
 
 .row {
