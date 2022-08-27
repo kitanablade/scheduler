@@ -26,9 +26,21 @@ for (var i = startTime; i < endTime + 1; i++) {
 
   hourLabel.setAttribute("class", "hour-label");
   hourLabel.textContent = i + ":00";
+  
   textEntryBox.setAttribute("class", "form-group");
+  const textAreaId = ("textArea-" + i);
+  textArea.setAttribute("id", textAreaId);
   textArea.setAttribute("class", hourColor);
-  textArea.setAttribute("id", "textArea-" + i);
+  console.log(textArea);
+  const scheduleText = document.getElementById(textAreaId);
+  console.log("scheduleText Element: ",scheduleText);
+  
+  if (localStorage.getItem(textAreaId) !== null){
+    const local = localStorage.getItem(textAreaId);
+    //console.log("Data in Local Storage: ", local);
+    textArea.value = local;
+    //console.log("LOCAL: ",local);
+  } 
   textArea.setAttribute("rows", "3");
   saveBtn.textContent = "Save";
   saveBtn.setAttribute("class", "save-btn");
@@ -45,11 +57,14 @@ for (var i = startTime; i < endTime + 1; i++) {
 
 function saveData(button){
     console.log(button);
-    localStorage.setItem(button.id, "TEST");
     const formEl = button.previousElementSibling;
-    textBox = formEl.firstChild.firstChild
+    textBox = formEl.firstChild.firstChild;
     console.log(textBox);
+    console.log(textBox.id);
     var data = document.getElementById(textBox.id).value;
     console.log(data);
+    localStorage.setItem(textBox.id, data);
+    let retrieved = localStorage.getItem(textBox.id);
+    console.log("RETRIEVED from local storage: ", retrieved);
 }
 
