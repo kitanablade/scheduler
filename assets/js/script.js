@@ -1,12 +1,15 @@
 var now = moment();
 $("#currentDay").text(now.format("MMM Do, YYYY HH:MM"));
 var timeblockContainer = document.getElementById("container");
+// Variables for the start and end times that can be easily changed
 var startTime = 8;
 var endTime = 18;
 var currentHour = now.format("HH");
 var hourColor = "";
 
+// Loop through the daily work hours and create text entry cards for each
 for (var i = startTime; i < endTime + 1; i++) {
+// Change css selector based on current time to change colors of hourly time block cards
   if (i < currentHour) {
     hourColor = "past";
   } else if (i == currentHour) {
@@ -22,6 +25,7 @@ for (var i = startTime; i < endTime + 1; i++) {
   var textArea = document.createElement("textarea");
 
   timeblock.setAttribute("class", "timeblock");
+  // Set a unique id for the timeblock
   timeblock.setAttribute("id", "hour-" + i);
 
   hourLabel.setAttribute("class", "hour-label");
@@ -32,6 +36,8 @@ for (var i = startTime; i < endTime + 1; i++) {
   textArea.setAttribute("id", textAreaId);
   textArea.setAttribute("class", hourColor);
   
+  // Check to see if there is a key matching the unique hourly textAreaId in local 
+  // storage. If so, get its data and populate it in the text field
   if (localStorage.getItem(textAreaId) !== null){
     const local = localStorage.getItem(textAreaId);
     textArea.value = local;
@@ -50,9 +56,10 @@ for (var i = startTime; i < endTime + 1; i++) {
   timeblock.append(saveBtn);
 }
 
+// When the user clicks the Save button, find the text box that shares the same 
+// time block as the button, get its id and data, then 
+// save in local storage
 function saveData(button){
-    // const formEl = button.previousElementSibling;
-    // textBox = formEl.firstChild.firstChild;
     const textBox = button.previousElementSibling.firstChild.firstChild;
     var data = document.getElementById(textBox.id).value;
     localStorage.setItem(textBox.id, data);
