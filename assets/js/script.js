@@ -31,15 +31,10 @@ for (var i = startTime; i < endTime + 1; i++) {
   const textAreaId = ("textArea-" + i);
   textArea.setAttribute("id", textAreaId);
   textArea.setAttribute("class", hourColor);
-  console.log(textArea);
-  const scheduleText = document.getElementById(textAreaId);
-  console.log("scheduleText Element: ",scheduleText);
   
   if (localStorage.getItem(textAreaId) !== null){
     const local = localStorage.getItem(textAreaId);
-    //console.log("Data in Local Storage: ", local);
     textArea.value = local;
-    //console.log("LOCAL: ",local);
   } 
   textArea.setAttribute("rows", "3");
   saveBtn.textContent = "Save";
@@ -56,15 +51,10 @@ for (var i = startTime; i < endTime + 1; i++) {
 }
 
 function saveData(button){
-    console.log(button);
-    const formEl = button.previousElementSibling;
-    textBox = formEl.firstChild.firstChild;
-    console.log(textBox);
-    console.log(textBox.id);
+    // const formEl = button.previousElementSibling;
+    // textBox = formEl.firstChild.firstChild;
+    const textBox = button.previousElementSibling.firstChild.firstChild;
     var data = document.getElementById(textBox.id).value;
-    console.log(data);
     localStorage.setItem(textBox.id, data);
-    let retrieved = localStorage.getItem(textBox.id);
-    console.log("RETRIEVED from local storage: ", retrieved);
 }
 
